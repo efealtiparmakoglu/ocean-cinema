@@ -1,0 +1,73 @@
+{
+  "output": "renders/gunbatimi.gif",
+  "palette": {
+    "sky_top": [
+      58,
+      32,
+      84
+    ],
+    "sky_bottom": [
+      255,
+      140,
+      55
+    ],
+    "cekcik_x": 0.42,
+    "cekcik_r": 0.05,
+    "cekcik_renk": [
+      255,
+      190,
+      90
+    ],
+    "glitter": 240,
+    "sea_top": [
+      110,
+      55,
+      40
+    ],
+    "sea_bottom": [
+      18,
+      10,
+      22
+    ],
+    "yuzey_cizgi": [
+      255,
+      200,
+      130
+    ],
+    "kopuk_renk": [
+      255,
+      225,
+      175
+    ]
+  },
+  "amplitud_olcek": 1.0,
+  "amplitud_px": 14,
+  "sim": {
+    "frames": 160,
+    "width": 960,
+    "height": 540,
+    "fps": 20,
+    "dalgalar": [
+      {
+        "lam": 110,
+        "genlik": 0.42,
+        "yon": 0.0
+      },
+      {
+        "lam": 58,
+        "genlik": 0.24,
+        "yon": 0.12
+      },
+      {
+        "lam": 34,
+        "genlik": 0.12,
+        "yon": -0.08
+      },
+      {
+        "lam": 20,
+        "genlik": 0.06,
+        "yon": 0.04
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "output": "renders/ay.gif",
+  "palette": {
+    "sky_top": [
+      18,
+      28,
+      60
+    ],
+    "sky_bottom": [
+      70,
+      100,
+      150
+    ],
+    "cekcik_x": 0.7,
+    "cekcik_r": 0.03,
+    "cekcik_renk": [
+      250,
+      250,
+      255
+    ],
+    "glitter": 230,
+    "sea_top": [
+      40,
+      70,
+      115
+    ],
+    "sea_bottom": [
+      6,
+      10,
+      26
+    ],
+    "yuzey_cizgi": [
+      160,
+      195,
+      240
+    ],
+    "kopuk_renk": [
+      210,
+      225,
+      250
+    ]
+  },
+  "amplitud_olcek": 1.0,
+  "amplitud_px": 14,
+  "sim": {
+    "frames": 160,
+    "width": 960,
+    "height": 540,
+    "fps": 20,
+    "dalgalar": [
+      {
+        "lam": 140,
+        "genlik": 0.5,
+        "yon": 0.0
+      },
+      {
+        "lam": 70,
+        "genlik": 0.28,
+        "yon": 0.15
+      },
+      {
+        "lam": 42,
+        "genlik": 0.14,
+        "yon": -0.1
+      },
+      {
+        "lam": 26,
+        "genlik": 0.08,
+        "yon": 0.05
+      }
+    ]
+  }
+}

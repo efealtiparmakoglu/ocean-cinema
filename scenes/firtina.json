@@ -1,0 +1,81 @@
+{
+  "output": "renders/firtina.gif",
+  "palette": {
+    "sky_top": [
+      34,
+      36,
+      42
+    ],
+    "sky_bottom": [
+      88,
+      92,
+      100
+    ],
+    "cekcik_x": 0.5,
+    "cekcik_r": 0.0,
+    "cekcik_renk": [
+      200,
+      200,
+      200
+    ],
+    "glitter": 0,
+    "sea_top": [
+      30,
+      34,
+      40
+    ],
+    "sea_bottom": [
+      6,
+      8,
+      11
+    ],
+    "yuzey_cizgi": [
+      165,
+      175,
+      190
+    ],
+    "kopuk_renk": [
+      235,
+      240,
+      248
+    ]
+  },
+  "amplitud_olcek": 1.0,
+  "amplitud_px": 26,
+  "sim": {
+    "frames": 160,
+    "width": 960,
+    "height": 540,
+    "fps": 20,
+    "dalgalar": [
+      {
+        "lam": 150,
+        "genlik": 0.6,
+        "yon": 0.05
+      },
+      {
+        "lam": 80,
+        "genlik": 0.4,
+        "yon": -0.1
+      },
+      {
+        "lam": 44,
+        "genlik": 0.25,
+        "yon": 0.12
+      },
+      {
+        "lam": 24,
+        "genlik": 0.15,
+        "yon": -0.05
+      },
+      {
+        "lam": 14,
+        "genlik": 0.08,
+        "yon": 0.08
+      }
+    ],
+    "extra": {
+      "amplitud_px": 26
+    }
+  }
+}
