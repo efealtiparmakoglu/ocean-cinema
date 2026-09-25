@@ -1,14 +1,16 @@
 {
   "output": "renders/ay_gece_hd.png",
   "ocean": { "size": 80, "segments": 512, "choppiness": 1.0, "time": 3.2,
+    "color": [0.002, 0.008, 0.02], "roughness": 0.05,
     "waves": [
       {"amplitude": 0.2, "wavelength": 14.0, "direction_deg": 20, "steepness": 0.5},
       {"amplitude": 0.12, "wavelength": 7.0, "direction_deg": 50, "steepness": 0.45},
       {"amplitude": 0.07, "wavelength": 3.5, "direction_deg": 75, "steepness": 0.35}
     ]
   },
-  "sun": { "elevation_deg": 12, "azimuth_deg": 180, "strength": 1.2 },
-  "sky": { "turbidity": 1.5, "dust": 1.0, "strength": 0.08 },
-  "camera": { "position": [0, -18, 6.5], "look_at": [0, 3, -0.5], "lens": 32 },
-  "render": { "width": 1600, "height": 900, "samples": 128, "exposure": 0.3 }
+  "sun": { "elevation_deg": 9, "azimuth_deg": 185, "strength": 2.0, "color": [0.78, 0.85, 1.0],
+    "disk": { "radius": 5.0, "strength": 26, "color": [0.9, 0.93, 1.0] } },
+  "sky": { "turbidity": 1.5, "dust": 1.0, "strength": 0.15 },
+  "camera": { "position": [0, -18, 3.5], "look_at": [0, 6, 1.5], "lens": 30 },
+  "render": { "width": 1600, "height": 900, "samples": 128, "exposure": 1.35 }
 }

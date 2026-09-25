@@ -6,35 +6,34 @@
 
 ![gunbatimi](renders/gunbatimi_hd.png)
 
+*Blender Cycles 3D Gerstner render — golden-hour glitter column.*
+
 ## 🖼️ Gallery / Galeri
 
-### 🌕 Ay — moonlight
-![ay](renders/ay.gif)
-Full moon, silver glitter path, four-wave swell. — *Dolunay, gümüş glitter yolu, dört dalgalı deniz.*
+### 🌅 Gün Batımı — sunset · `ocean_render.py`
+![gunbatimi v2](renders/gunbatimi_v2_hd.png)
+Low sun on the horizon, its light path breaking across the swell. — *Ufukta alçak güneş, ışık yolu dalgalarda kırılarak geliyor.*
 
-### 🌅 Gün Batımı — sunset
-![gunbatimi](renders/gunbatimi_hd.png)
-Purple-to-orange sky, the sun sinking into its own glitter column. — *Mordan turuncuya gökyüzü, güneş kendi ışık sütununa gömülüyor.*
-
-### ⚡ Fırtına — storm
+### ⚡ Fırtına — storm · `ocean_render.py`
 ![firtina](renders/firtina_hd.png)
-Five stacked wave trains, foam caps on every crest. — *Beş üst üste dalga treni, her tepede köpük.*
+Five stacked wave trains under a turbid sky, whitecaps on every crest. — *Bulanık gökyüzü altında beş üst üste dalga treni, her tepede köpük.*
 
-### 🏝️ Sakin — calm
-![sakin](renders/sakin.gif)
-Tropical morning: three gentle swells, glassy water. — *Tropikal sabah: üç nazik dalga, camsı deniz.*
-
-### 🌙 Ay Gecesi / Moonlight — `ocean_render.py -- --scene scenes/ay_gece.json`
+### 🌙 Ay Gecesi — moonlight · `ocean_render.py`
 ![ay_gece](renders/ay_gece_hd.png)
-Subtle moon reflections on dark water. — *Koyu suda soluk ay yansimalari.*
+A full moon pouring a silver glitter column onto dark water. — *Dolunay koyu suya gümüş bir ışık sütunu döküyor.*
 
-### 🪩 Tropikal — [`scenes/tropikal.json`](scenes/tropikal.json)
+### 🏝️ Tropikal — tropical · `ocean_render.py`
 ![tropikal](renders/tropikal_hd.png)
-Crystal-clear tropical ocean with gentle rolling swells. — *Billur netliginde tropik okyanus, nazik dokuli dalgalar.*
+Crystal-clear teal water, three gentle swells, glassy morning light. — *Billur berraklığında turkuaz su, üç nazik dalga, camsı sabah ışığı.*
 
-### 🌅 Gunbatimi HD — [`scenes/gunbatimi_hd.json`](scenes/gunbatimi_hd.json)
-![gunbatimi_hd](renders/gunbatimi_hd.png)
-Deep blue 3D Gerstner waves, camera pulled back for proper perspective. — *Derin mavi 3B Gerstner dalgalar, kamera geri cekilmis perspektif.*
+### 🎞️ 2D motor — döngülü GIF'ler (`ocean.py`)
+
+Aynı fizik motorunun piksel-render hali: her kare NumPy ile hesaplanır.
+
+| | | |
+|---|---|---|
+| ![ay](renders/ay.gif) | ![sakin](renders/sakin.gif) | ![gunbatimi](renders/gunbatimi.gif) |
+| 🌕 Ay | 🏝️ Sakin | 🌅 Gün Batımı |
 
 ## 🧱 Physics / Fizik
 
@@ -62,8 +61,15 @@ python3 tests/verify.py
 
 ```bash
 pip install numpy
+# 2D motor — döngülü GIF
 python3 ocean.py --scene scenes/gunbatimi.json
+
+# 3D Cycles render (Blender 4.2+ / 5.x)
+blender --background --python ocean_render.py -- --scene scenes/ay_gece.json
+HIZLI=1 blender --background --python ocean_render.py -- --scene scenes/ay_gece.json  # hızlı önizleme
 ```
+
+Sahne JSON'ları: `ocean` (dalga trenleri, choppiness, su rengi), `sun` (elevation/azimuth, lamba rengi, `disk`), `sky` (turbidity, strength, az_offset), `camera` (position/look_at/lens), `render` (çözünürlük, samples, exposure, look).
 
 ## 🧪 Why / Neden
 

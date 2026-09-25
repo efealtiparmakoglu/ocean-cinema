@@ -1,14 +1,16 @@
 {
   "output": "renders/tropikal_hd.png",
   "ocean": { "size": 60, "segments": 400, "choppiness": 0.6, "time": 5.0,
+    "color": [0.006, 0.055, 0.07], "roughness": 0.045,
     "waves": [
       {"amplitude": 0.08, "wavelength": 10.0, "direction_deg": 0, "steepness": 0.3},
       {"amplitude": 0.05, "wavelength": 5.0, "direction_deg": 25, "steepness": 0.25},
       {"amplitude": 0.03, "wavelength": 2.5, "direction_deg": 50, "steepness": 0.2}
     ]
   },
-  "sun": { "elevation_deg": 45, "azimuth_deg": 140, "strength": 4.0 },
-  "sky": { "turbidity": 2.0, "dust": 1.0, "strength": 1.0 },
-  "camera": { "position": [0, -14, 9], "look_at": [0, 2, 0], "lens": 35 },
-  "render": { "width": 1600, "height": 900, "samples": 128, "exposure": 0.9 }
+  "sun": { "elevation_deg": 35, "azimuth_deg": 140, "strength": 5.0,
+    "disk": { "radius": 1.8, "strength": 45, "color": [1.0, 0.95, 0.85] } },
+  "sky": { "turbidity": 2.5, "dust": 1.2, "strength": 1.15 },
+  "camera": { "position": [0, -14, 3.0], "look_at": [0, 8, 0.7], "lens": 34 },
+  "render": { "width": 1600, "height": 900, "samples": 128, "exposure": 0.85 }
 }
