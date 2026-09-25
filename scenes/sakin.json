@@ -1,0 +1,71 @@
+{
+  "output": "renders/sakin.gif",
+  "palette": {
+    "sky_top": [
+      88,
+      150,
+      205
+    ],
+    "sky_bottom": [
+      200,
+      228,
+      245
+    ],
+    "cekcik_x": 0.3,
+    "cekcik_r": 0.022,
+    "cekcik_renk": [
+      255,
+      255,
+      250
+    ],
+    "glitter": 150,
+    "sea_top": [
+      26,
+      110,
+      150
+    ],
+    "sea_bottom": [
+      5,
+      30,
+      62
+    ],
+    "yuzey_cizgi": [
+      215,
+      240,
+      248
+    ],
+    "kopuk_renk": [
+      240,
+      250,
+      255
+    ]
+  },
+  "amplitud_olcek": 1.0,
+  "amplitud_px": 8,
+  "sim": {
+    "frames": 160,
+    "width": 960,
+    "height": 540,
+    "fps": 20,
+    "dalgalar": [
+      {
+        "lam": 160,
+        "genlik": 0.35,
+        "yon": 0.0
+      },
+      {
+        "lam": 90,
+        "genlik": 0.18,
+        "yon": 0.08
+      },
+      {
+        "lam": 50,
+        "genlik": 0.08,
+        "yon": -0.05
+      }
+    ],
+    "extra": {
+      "amplitud_px": 8
+    }
+  }
+}
