@@ -4,7 +4,7 @@
 
 **TR:** Gerstner dalga denizi simülatörü — derin su dispersiyonu (ω = √(gk)), çoklu dalga süperpozisyonu, kırılan tepelerde köpük, ay/güneş glitter yolu. Denizin dört farklı ruh hali, döngülü GIF'ler olarak. **Bu motor [`ship-cinema`](https://github.com/efealtiparmakoglu/ship-cinema) tarafından import edilerek gemiler bu denizde yüzdürülüyor.**
 
-![gunbatimi](renders/gunbatimi.gif)
+![gunbatimi](renders/gunbatimi_hd.png)
 
 ## 🖼️ Gallery / Galeri
 
@@ -13,16 +13,28 @@
 Full moon, silver glitter path, four-wave swell. — *Dolunay, gümüş glitter yolu, dört dalgalı deniz.*
 
 ### 🌅 Gün Batımı — sunset
-![gunbatimi](renders/gunbatimi.gif)
+![gunbatimi](renders/gunbatimi_hd.png)
 Purple-to-orange sky, the sun sinking into its own glitter column. — *Mordan turuncuya gökyüzü, güneş kendi ışık sütununa gömülüyor.*
 
 ### ⚡ Fırtına — storm
-![firtina](renders/firtina.gif)
+![firtina](renders/firtina_hd.png)
 Five stacked wave trains, foam caps on every crest. — *Beş üst üste dalga treni, her tepede köpük.*
 
 ### 🏝️ Sakin — calm
 ![sakin](renders/sakin.gif)
 Tropical morning: three gentle swells, glassy water. — *Tropikal sabah: üç nazik dalga, camsı deniz.*
+
+### 🌙 Ay Gecesi / Moonlight — `ocean_render.py -- --scene scenes/ay_gece.json`
+![ay_gece](renders/ay_gece_hd.png)
+Subtle moon reflections on dark water. — *Koyu suda soluk ay yansimalari.*
+
+### 🪩 Tropikal — [`scenes/tropikal.json`](scenes/tropikal.json)
+![tropikal](renders/tropikal_hd.png)
+Crystal-clear tropical ocean with gentle rolling swells. — *Billur netliginde tropik okyanus, nazik dokuli dalgalar.*
+
+### 🌅 Gunbatimi HD — [`scenes/gunbatimi_hd.json`](scenes/gunbatimi_hd.json)
+![gunbatimi_hd](renders/gunbatimi_hd.png)
+Deep blue 3D Gerstner waves, camera pulled back for proper perspective. — *Derin mavi 3B Gerstner dalgalar, kamera geri cekilmis perspektif.*
 
 ## 🧱 Physics / Fizik
 
