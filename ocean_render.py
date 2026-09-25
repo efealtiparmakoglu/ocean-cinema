@@ -46,6 +46,46 @@ def kamera_kur(konum, hedef, lens=50):
     yon = Vector(hedef) - Vector(konum)
     co.rotation_euler = yon.to_track_quat("-Z", "Y").to_euler()
     bpy.context.scene.camera = co
+    print(f"  [kamera] konum={tuple(round(x,2) for x in konum)} "
+          f"hedef={tuple(round(x,2) for x in hedef)} lens={lens}")
+
+
+def gunes_vektoru(el_rad, az_rad):
+    """Ufuktan yukselis acisiyla gunes yonu (birim, sahne->gunes)."""
+    return Vector((math.cos(el_rad) * math.sin(az_rad),
+                   -math.cos(el_rad) * math.cos(az_rad),
+                   math.sin(el_rad)))
+
+
+def govcem_diski(cfg, cam_konum):
+    """Gunes/ay diski: SUN lambasiyla ayni aci vektorunde emissive mesh."""
+    d = cfg["sun"].get("disk")
+    if not d:
+        return
+    el = math.radians(cfg["sun"]["elevation_deg"])
+    az = math.radians(cfg["sun"]["azimuth_deg"])
+    dist = d.get("distance", 260)
+    merkez = gunes_vektoru(el, az) * dist
+    bpy.ops.mesh.primitive_circle_add(vertices=96, radius=d.get("radius", 2.5),
+                                      fill_type="NGON", location=merkez)
+    disk = bpy.context.active_object
+    disk.name = "govdem_diski"
+    yon = Vector(cam_konum) - merkez
+    disk.rotation_euler = yon.to_track_quat("Z", "Y").to_euler()
+
+    m = bpy.data.materials.new("DiskMat")
+    m.use_nodes = True
+    nt = m.node_tree
+    nt.nodes.clear()
+    em = nt.nodes.new("ShaderNodeEmission")
+    renk = list(d.get("color", (1.0, 0.6, 0.3)))
+    if len(renk) == 3:
+        renk.append(1.0)
+    em.inputs["Color"].default_value = renk
+    em.inputs["Strength"].default_value = d.get("strength", 40.0)
+    out = nt.nodes.new("ShaderNodeOutputMaterial")
+    nt.links.new(em.outputs["Emission"], out.inputs["Surface"])
+    disk.data.materials.append(m)
 
 
 # ---------------------------------------------------------------- Gerstner mesh
@@ -135,14 +175,20 @@ def sahne_kur(cfg):
         sc.cycles.device = "GPU"
     except Exception as e:
         print("  [uyari] GPU:", e)
-        sc.view_settings.exposure = cfg["render"].get("exposure", 0.5)
     sc.cycles.samples = cfg["render"].get("samples", 128)
     sc.cycles.use_denoising = True
     sc.render.resolution_x = cfg["render"].get("width", 1600)
     sc.render.resolution_y = cfg["render"].get("height", 900)
     sc.view_settings.view_transform = "Filmic"
+    sc.view_settings.exposure = cfg["render"].get("exposure", 0.0)
+    look = cfg["render"].get("look")
+    if look:
+        try:
+            sc.view_settings.look = look
+        except Exception as e:
+            print(f"  [uyari] look '{look}': {e}")
 
-    # dunya: Nishita gokyuzu
+    # dunya: Hosek-Wilkie gokyuzu
     dunya = bpy.data.worlds.new("Gokyuzu")
     sc.world = dunya
     dunya.use_nodes = True
@@ -154,6 +200,14 @@ def sahne_kur(cfg):
     sun_azim = math.radians(cfg["sun"]["azimuth_deg"])
     sky.sun_elevation = sun_elev
     sky.sun_rotation = sun_azim
+    skycfg = cfg.get("sky", {})
+    for attr, key, varsayilan in (("turbidity", "turbidity", 2.2),
+                                  ("dust_density", "dust", 1.0)):
+        try:
+            setattr(sky, attr, skycfg.get(key, varsayilan))
+        except Exception as e:
+            print(f"  [uyari] sky.{attr}: {e}")
+    sky.sun_rotation = sun_azim + math.radians(skycfg.get("az_offset", 0))
     bg_node = nt.nodes.new("ShaderNodeBackground")
     bg_node.inputs["Strength"].default_value = cfg["sky"].get("strength", 1.0)
     out = nt.nodes.new("ShaderNodeOutputWorld")
@@ -164,10 +218,10 @@ def sahne_kur(cfg):
     sun_data = bpy.data.lights.new("gunes", "SUN")
     sun_data.energy = cfg["sun"].get("strength", 3.5)
     sun_data.angle = math.radians(1.2)
-    sun_data.color = (1.0, 0.9, 0.75)
+    sun_data.color = tuple(cfg["sun"].get("color", (1.0, 0.9, 0.75)))
     sun_obj = bpy.data.objects.new("gunes_isigi", sun_data)
     bpy.context.collection.objects.link(sun_obj)
-    sun_obj.rotation_euler = (sun_elev, 0, sun_azim)
+    sun_obj.rotation_euler = gunes_vektoru(sun_elev, sun_azim).to_track_quat("Z", "Y").to_euler()
 
     return sc
 
@@ -219,8 +273,9 @@ def okyanus(cfg):
     m.use_nodes = True
     nt = m.node_tree
     bsdf = nt.nodes["Principled BSDF"]
-    bsdf.inputs["Base Color"].default_value = (0.004, 0.025, 0.07, 1)
-    bsdf.inputs["Roughness"].default_value = 0.055
+    renk = oc.get("color", (0.004, 0.025, 0.07))
+    bsdf.inputs["Base Color"].default_value = (renk[0], renk[1], renk[2], 1)
+    bsdf.inputs["Roughness"].default_value = oc.get("roughness", 0.055)
     bsdf.inputs["IOR"].default_value = 1.33
     noise = nt.nodes.new("ShaderNodeTexNoise")
     noise.inputs["Scale"].default_value = 18.0
@@ -246,6 +301,11 @@ def main():
     a = ap.parse_args(args)
 
     cfg = json.load(open(a.scene, encoding="utf-8"))
+    if os.environ.get("HIZLI") == "1":
+        cfg["render"] = {**cfg.get("render", {}), "width": 800, "height": 450,
+                         "samples": 40}
+        cfg["output"] = "/tmp/onizleme_" + os.path.basename(a.scene).replace(".json", ".png")
+        print("  [HIZLI] onizleme modu: 800x450 / 40 sample ->", cfg["output"])
     temiz()
 
     sc = sahne_kur(cfg)
@@ -253,6 +313,7 @@ def main():
 
     cam = cfg["camera"]
     kamera_kur(cam["position"], cam["look_at"], cam.get("lens", 50))
+    govcem_diski(cfg, cam["position"])
 
     out = cfg["output"]
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)

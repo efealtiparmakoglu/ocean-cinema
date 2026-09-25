@@ -9,8 +9,9 @@
       {"amplitude": 0.05, "wavelength": 1.6, "direction_deg": 85, "steepness": 0.3}
     ]
   },
-  "sun": { "elevation_deg": 4, "azimuth_deg": 195, "strength": 3.0 },
-  "sky": { "turbidity": 4.5, "dust": 3.5, "strength": 1.0 },
-  "camera": { "position": [4, -18, 5.5], "look_at": [0, 3, 0], "lens": 35 },
-  "render": { "width": 1600, "height": 900, "samples": 192, "exposure": 0.7 }
+  "sun": { "elevation_deg": 4, "azimuth_deg": 195, "strength": 6.0, "color": [1.0, 0.45, 0.15],
+    "disk": { "radius": 2.4, "strength": 4.5, "color": [1.0, 0.5, 0.2] } },
+  "sky": { "turbidity": 5.0, "dust": 3.5, "strength": 1.4 },
+  "camera": { "position": [4, -18, 4.0], "look_at": [0, 6, 1.2], "lens": 35 },
+  "render": { "width": 1600, "height": 900, "samples": 192, "exposure": 0.6, "look": "Medium High Contrast" }
 }
