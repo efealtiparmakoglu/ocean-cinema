@@ -21,7 +21,7 @@ Purple-to-orange sky, the sun sinking into its own glitter column. — *Mordan t
 Five stacked wave trains, foam caps on every crest. — *Beş üst üste dalga treni, her tepede köpük.*
 
 ### 🏝️ Sakin — calm
-![sakin](renders/sakin.png)
+![sakin](renders/sakin.gif)
 Tropical morning: three gentle swells, glassy water. — *Tropikal sabah: üç nazik dalga, camsı deniz.*
 
 ## 🧱 Physics / Fizik
@@ -32,6 +32,7 @@ Tropical morning: three gentle swells, glassy water. — *Tropikal sabah: üç n
 | 📈 Surface | Height profile Σ A·sin(k·x·cosθ − ωt) rendered per column |
 | 🫧 Foam | Crest detection: height + steepness thresholds → white caps |
 | ☀️ Light | Celestial disk + glitter column, vertical sky gradient |
+| 🖼️ Stills | Her sahnenin son karesi PNG olarak da durur (renders/*.png) |
 
 ## ✅ Verification / Doğrulama
 
