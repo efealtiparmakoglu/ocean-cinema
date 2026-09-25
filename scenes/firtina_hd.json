@@ -1,0 +1,16 @@
+{
+  "output": "renders/firtina_hd.png",
+  "ocean": { "size": 80, "segments": 512, "choppiness": 1.6, "time": 8.0,
+    "waves": [
+      {"amplitude": 0.55, "wavelength": 18.0, "direction_deg": 10, "steepness": 0.8},
+      {"amplitude": 0.35, "wavelength": 9.0, "direction_deg": 35, "steepness": 0.7},
+      {"amplitude": 0.2, "wavelength": 4.5, "direction_deg": 60, "steepness": 0.5},
+      {"amplitude": 0.12, "wavelength": 2.2, "direction_deg": 85, "steepness": 0.4},
+      {"amplitude": 0.07, "wavelength": 1.1, "direction_deg": 100, "steepness": 0.3}
+    ]
+  },
+  "sun": { "elevation_deg": 8, "azimuth_deg": 190, "strength": 1.5 },
+  "sky": { "turbidity": 6.0, "dust": 4.0, "strength": 0.6 },
+  "camera": { "position": [0, -16, 8.5], "look_at": [0, 2, -0.5], "lens": 32 },
+  "render": { "width": 1600, "height": 900, "samples": 128, "exposure": 0.7 }
+}

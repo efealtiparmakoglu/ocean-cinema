@@ -1,0 +1,14 @@
+{
+  "output": "renders/gunbatimi_v2_hd.png",
+  "ocean": { "size": 80, "segments": 512, "choppiness": 1.3, "time": 1.5,
+    "waves": [
+      {"amplitude": 0.22, "wavelength": 11.0, "direction_deg": 5, "steepness": 0.7},
+      {"amplitude": 0.12, "wavelength": 5.5, "direction_deg": 30, "steepness": 0.55},
+      {"amplitude": 0.06, "wavelength": 2.8, "direction_deg": 55, "steepness": 0.4}
+    ]
+  },
+  "sun": { "elevation_deg": 2, "azimuth_deg": 200, "strength": 5.0 },
+  "sky": { "turbidity": 6.0, "dust": 4.0, "strength": 1.2 },
+  "camera": { "position": [-3, -16, 3.2], "look_at": [0, 3, 0], "lens": 30 },
+  "render": { "width": 1600, "height": 900, "samples": 192, "exposure": 0.85 }
+}
